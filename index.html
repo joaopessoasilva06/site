@@ -6,12 +6,20 @@
     <script src="jquery.js"></script>
     <script>
       $(document).ready(function(){
-        alert("deu certo");
-      
+        btn_um.onclick = function(){
+            $("#campo").val(1)
+        }
+        btn_dois.onclick = function(){
+            $("#campo").val(2)
+        }
       });
     </script>
   </head>
   <body>
-oi
+    <input id="campo" type="number"></br></br>
+    <button id="btn_um" onclick="um();">1</button> <button id="btn_dois" onclick="">2</button> <button onclick="">3</button> <button onclick="">X</button> <button onclick="">%</button></br></br>
+    <button onclick="">4</button> <button onclick="">5</button> <button onclick="">6</button> <button onclick="">+</button> <button onclick="">.</button></br></br>
+    <button onclick="">7</button> <button onclick="">8</button> <button onclick="">9</button> <button onclick="">-</button> <button onclick="">,</button></br></br>
+    <button onclick="">*</button> <button onclick="">0</button> <button onclick="">#</button> <button onclick="">/</button> <button onclick=""></button></br></br>
   </body>
 </html>
