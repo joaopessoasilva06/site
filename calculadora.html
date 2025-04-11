@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <!-- Carrega o arquivo CSS para estilizar a calculadora -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Função para adicionar um valor ao visor
+function adicionar(valor) {
+    document.getElementById('visor').value += valor;
+}
+
+// Função para limpar o visor
+function limpar() {
+    document.getElementById('visor').value = '';
+}
+
+// Função para apagar o último caractere
+function apagar() {
+    var visor = document.getElementById('visor');
+    visor.value = visor.value.slice(0, -1);
+}
+
+// Função para calcular o resultado
+function calcular() {
+    var visor = document.getElementById('visor');
+    try {
+        // Usa a função eval() para calcular o resultado
+        // Nota: eval() pode ser perigoso com entrada não confiável
+        visor.value = eval(visor.value);
+    } catch (error) {
+        // Se houver um erro na expressão, mostra "Erro" no visor
+        visor.value = 'Erro';
+    }
+}
+    </script>
+    <style>
+        /* Estilos CSS para a calculadora */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+.calculadora {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+#visor {
+    width: 100%;
+    height: 40px;
+    font-size: 24px;
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #eee;
+    border: none;
+}
+.botoes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+button {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #45a049;
+}
+.operador {
+    background-color: #f44336;
+}
+.operador:hover {
+    background-color: #da190b;
+}
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <!-- Visor da calculadora -->
+        <input type="text" id="visor" readonly>
+        
+        <!-- Botões da calculadora -->
+        <div class="botoes">
+            <button onclick="limpar()">C</button>
+            <button onclick="apagar()">←</button>
+            <button onclick="adicionar('%')">%</button>
+            <button class="operador" onclick="adicionar('/')">/</button>
+            
+            <button onclick="adicionar('7')">7</button>
+            <button onclick="adicionar('8')">8</button>
+            <button onclick="adicionar('9')">9</button>
+            <button class="operador" onclick="adicionar('*')">*</button>
+            
+            <button onclick="adicionar('4')">4</button>
+            <button onclick="adicionar('5')">5</button>
+            <button onclick="adicionar('6')">6</button>
+            <button class="operador" onclick="adicionar('-')">-</button>
+            
+            <button onclick="adicionar('1')">1</button>
+            <button onclick="adicionar('2')">2</button>
+            <button onclick="adicionar('3')">3</button>
+            <button class="operador" onclick="adicionar('+')">+</button>
+            
+            <button onclick="adicionar('0')">0</button>
+            <button onclick="adicionar('.')">.</button>
+            <button onclick="calcular()" class="operador" style="grid-column: span 2;">=</button>
+        </div>
+    </div>
+    <!-- Carrega o arquivo JS para as funções da calculadora -->
+    <script src="script.js" defer></script>
+</body>
+</html>
